@@ -6,9 +6,8 @@ The backend of Tomato is an Express-based Node.js application that manages datab
 
 ## 🛠️ Architecture & Modules
 
-### 1. Database Connection & Schema Fallback (`/config/db.js`)
-* Connects seamlessly to a local MongoDB instance.
-* Automatically catches connection exceptions and redirects database queries to a cloud MongoDB Atlas cluster if the local database server goes offline.
+### 1. Database Connection (`/config/db.js`)
+* Connects to MongoDB Atlas.
 
 ### 2. User Authentication (`/middleware/auth.js`)
 * JSON Web Token (JWT) based route protection.
