@@ -1,16 +1,51 @@
-# React + Vite
+# 🍕 Tomato Customer Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tomato is a customer-facing food ordering web application designed with modern user experience practices. The application features sleek layouts, responsive designs, and smooth transitions that make ordering food simple, fast, and enjoyable.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features & Capabilities
 
-## React Compiler
+### 🛍️ Menu Browser & Search
+* Browse foods by scrollable categories (Salad, Rolls, Desert, Sandwich, Cake, Pure Veg, Pasta, Noodles).
+* Smooth scroll navigation to sections on home page.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🌟 Dynamic Star Ratings
+* Displays dynamic 1-5 star ratings (★) fetched from the backend database on every food card, giving users real-time quality insights.
 
-## Expanding the ESLint configuration
+### 🛒 Real-time Cart Management
+* Fast click addition/subtraction.
+* Dynamically computed Subtotals and Delivery Fees.
+* Automatically syncs with local storage token to keep cart data consistent across page reloads.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 💳 Stripe Payments Checkout
+* Secure payment flow integrated with Stripe.
+* Redirects to Stripe Checkout and handles redirection parameters via a custom loader `/verify` endpoint.
+
+### 📦 Order Tracking Dashboard (`/myorders`)
+* Users can view their historical and active orders.
+* "Track Order" button to ping the server and retrieve real-time preparation status changes made by the administrator.
+
+---
+
+## 💻 Tech Stack
+* **Vite** (Build Tool)
+* **React** (Component Library)
+* **React Router DOM** (Single Page App Routing)
+* **Axios** (API Calls)
+* **React Context API** (Global state management)
+
+---
+
+## ⚙️ Quick Start
+
+1. Ensure the API Backend is running on `http://localhost:4000`.
+2. Run installation inside the `/frontend` folder:
+   ```bash
+   npm install
+   ```
+3. Start the application:
+   ```bash
+   npm run dev
+   ```
+4. Access the web app in your browser at `http://localhost:5173`.
