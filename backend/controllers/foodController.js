@@ -48,4 +48,16 @@ const removeFood = async (req, res) => {
    }
 }
 
-export {addFood, listFood, removeFood}
+// update food price
+const updatePrice = async (req, res) => {
+  try {
+    const { id, price } = req.body;
+    await foodModel.findByIdAndUpdate(id, { price: Number(price) });
+    res.json({ success: true, message: "Price Updated" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Error" });
+  }
+}
+
+export {addFood, listFood, removeFood, updatePrice}

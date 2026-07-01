@@ -6,6 +6,8 @@ import { toast } from "react-toastify"
 const List = ({url}) => {
 
   const [list, setList] = useState([]);
+  const [editingId, setEditingId] = useState(null);
+  const [tempPrice, setTempPrice] = useState("");
 
   const fetchList = async () => {
     const response = await axios.get(`${url}/api/food/list`);
@@ -28,13 +30,33 @@ const List = ({url}) => {
     }
   }
 
+  const handleEditClick = (item) => {
+    setEditingId(item._id);
+    setTempPrice(item.price);
+  };
+
+  const handleSaveClick = async (id) => {
+    try {
+      const response = await axios.post(`${url}/api/food/update-price`, { id, price: tempPrice });
+      if (response.data.success) {
+        toast.success("Price updated successfully");
+        setEditingId(null);
+        await fetchList();
+      } else {
+        toast.error("Error updating price");
+      }
+    } catch (error) {
+      toast.error("Error updating price");
+    }
+  };
+
   useEffect(() => {
     fetchList();
   },[])
 
   return (
     <div className='list add flex-col'>
-      <p>All Foods List</p>
+      <p>All Foods List (Click price to edit)</p>
       <div className="list-table">
         <div className="list-table-format title">
           <b>Image</b>
@@ -49,7 +71,21 @@ const List = ({url}) => {
               <img src={`${url}/images/`+item.image} alt="" />
               <p>{item.name}</p>
               <p>{item.category}</p>
-              <p>{item.price}</p>
+              {editingId === item._id ? (
+                <div className="price-edit-container">
+                  <input
+                    type="number"
+                    value={tempPrice}
+                    onChange={(e) => setTempPrice(e.target.value)}
+                    className="price-input"
+                  />
+                  <button onClick={() => handleSaveClick(item._id)} className="save-btn">✓</button>
+                </div>
+              ) : (
+                <p onClick={() => handleEditClick(item)} className="price-text cursor">
+                  ${item.price} ✎
+                </p>
+              )}
               <p onClick={()=>removeFood(item._id)} className='cursor'>X</p>
             </div>
           )

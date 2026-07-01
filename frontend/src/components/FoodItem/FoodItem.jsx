@@ -3,7 +3,7 @@ import './FoodItem.css'
 import { assets } from '../../assets/frontend_assets/assets'
 import { StoreContext } from '../../context/StoreContext';
 
-const FoodItem = ({id, name, price, description, image}) => {
+const FoodItem = ({id, name, price, description, image, rating = 5}) => {
 
   const {cartItems, addToCart, removeFromCart, url} = useContext(StoreContext);
 
@@ -23,7 +23,11 @@ const FoodItem = ({id, name, price, description, image}) => {
       <div className="food-item-info">
         <div className="food-item-name-rating">
           <p>{name}</p>
-          <img src={assets.rating_starts} alt="" />
+          <div className="stars-rating">
+            {Array.from({ length: 5 }, (_, i) => (
+              <span key={i} className={i < rating ? "star filled" : "star"}>★</span>
+            ))}
+          </div>
         </div>
         <p className="food-item-desc">{description}</p>
         <p className="food-item-price">${price}</p>

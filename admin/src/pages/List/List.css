@@ -23,3 +23,38 @@
     display: none;
   }
 }
+
+.price-edit-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.price-input {
+  width: 60px;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.save-btn {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.price-text {
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.price-text:hover {
+  background-color: #f0f0f0;
+}

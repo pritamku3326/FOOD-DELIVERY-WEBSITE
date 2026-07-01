@@ -24,8 +24,16 @@
   font-size: 20px;
   font-weight: 500;
 }
-.food-item-name-rating img{
-  width: 70px;
+.stars-rating {
+  display: flex;
+  gap: 2px;
+}
+.stars-rating .star {
+  color: #e0e0e0;
+  font-size: 16px;
+}
+.stars-rating .star.filled {
+  color: #ffb300;
 }
 .food-item-desc{
   color: #676767;
